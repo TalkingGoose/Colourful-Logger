@@ -41,7 +41,7 @@ This logger does add some functions to the string prototype in '/libs/Colours.js
 
 These functions allow you to simply call the name of the colour on the string and it'll print with that style.
 
-The colours that are usable are as below:
+The colours that are usable are as below;
 
     String.black
     String.red
@@ -53,14 +53,14 @@ The colours that are usable are as below:
     String.white
     String.grey/gray
 
-You are also able to change the background of text:
+You are also able to change the background of text;
 
     String.bgBlack
     String.bgRed
     String.bgGreen
     String.bgBlue
 
-There are also a few styles that are available to use:
+There are also a few styles that are available to use;
 
     String.bold
     String.dim
