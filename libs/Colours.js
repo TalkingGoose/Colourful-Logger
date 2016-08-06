@@ -1,4 +1,8 @@
-var styles = { };
+'use strict';
+
+var isEnabled = !process.browser && process.stdout.isTTY;
+
+var styles = {};
 
 var codes = {
     reset: [0, 0],
@@ -32,23 +36,66 @@ var codes = {
     bgWhite: [47, 49]
 };
 
-Object.keys(codes).forEach(function(key) {
-    var val = codes[key], style;
+var _loop = function _loop(key) {
+    if (!codes.hasOwnProperty(key)) {
+        return 'continue';
+    }
 
-    style = styles[key] = {
-        open: '\u001b[' + val[0] + 'm',
-        close: '\u001b[' + val[1] + 'm'
+    val = codes[key];
+
+    styles[key] = {
+        'open': '\u001b[' + val[0] + 'm',
+        'close': '\u001b[' + val[1] + 'm'
     };
 
     if (String.prototype[key] === undefined) {
         Object.defineProperty(String.prototype, key, {
-            get: function() {
-                return style.open + this + style.close;
-            }
+            get: function () {
+                var style = styles[key];
+
+                /**
+                 * Returns a colour formatted string
+                 *
+                 * @param {String} str The string to format with colour
+                 * @returns {String}
+                 */
+                module.exports[key] = function (str) {
+                    return isEnabled ? style.open + str + style.close : str;
+                };
+
+                /**
+                 * @returns {String} The string, surrounded in the required colour markers
+                 */
+                return function () {
+                    return isEnabled ? style.open + this + style.close : this;
+                };
+            }()
         });
     }
+};
 
-    module.exports[key] = function(str) {
-        return style.open + str + style.close;
-    };
+for (var key in codes) {
+    var val;
+
+    var _ret = _loop(key);
+
+    if (_ret === 'continue') continue;
+}
+
+Object.defineProperties(String.prototype, {
+    'properLength': {
+        /**
+         * Returns the length, minus all the escape characters added from colouring,
+         * giving you the visable length of the string.
+         *
+         * @returns {Number}
+         */
+        'get': function get() {
+            if (/\u001b\[[0-9]+m/g.test(this)) {
+                return this.replace(/\u001b\[[0-9]+m/g, '').length;
+            }
+
+            return this.length;
+        }
+    }
 });
