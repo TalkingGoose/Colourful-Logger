@@ -1,4 +1,4 @@
-# Colourful-Logger
+# Logger
 A colourful logger for all your logging needs
 
 ## Usage
@@ -11,24 +11,24 @@ The two types of call you can make are the following:
 
 ### Just a message
 
-    Logger.info("message");
+    logger.info("message");
 
 ### Named message
 
-    Logger.info("name", "message");
+    logger.info("name", "message");
 
 ### Basic example
 
-    var logger = new require('./libs/Logger/')({ 'prefix': 'TestLogger' });
+    require('Logger'); // Adds the logger to the globals
     logger.info('\u2713 I worked!'.green);
     logger.error('Oh no!', 'Something went wrong captain!');
 
 ## Available Methods
 
+- .fatal(...) // Kills the process
 - .error(...)
 - .warning(...)
 - .info(...)
-- .log(...)
 - .debug(...)
 
 ## Example Output
@@ -37,7 +37,7 @@ The two types of call you can make are the following:
 
 ## Beware...
 
-This logger does add some functions to the string prototype in '/libs/Colours.js'.
+This logger does add some functions to the string prototype in './libs/Colours.js'.
 
 These functions allow you to simply call the name of the colour on the string and it'll print with that style.
 
