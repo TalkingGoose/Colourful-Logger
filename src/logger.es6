@@ -82,6 +82,7 @@ Object.defineProperties(Logger.prototype, {
             this.stream = stream;
 
             if (process.browser) {
+                Colours.disable();
                 return (this.output = this.outputBrowser);
             }
 
@@ -201,8 +202,8 @@ Object.defineProperties(Logger.prototype, {
      *
      * @this Logger
      * @memberof Logger#
-     * @alias Logger.output
-     * @method Logger#output
+     * @alias Logger.outputPlaintext
+     * @method Logger#outputPlaintext
      * @param {String} ...strings The strings to output
      */
     'outputPlaintext': {
@@ -224,8 +225,8 @@ Object.defineProperties(Logger.prototype, {
      *
      * @this Logger
      * @memberof Logger#
-     * @alias Logger.output
-     * @method Logger#output
+     * @alias Logger.outputColour
+     * @method Logger#outputColour
      * @param {String} ...strings The strings to output
      */
     'outputColour': {
