@@ -3,9 +3,16 @@
   "version": "1.0.0",
   "description": "A colourful logger for all your logging needs",
   "main": "index.js",
+  "bin": {
+    "logger": "index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bugs": {
+    "url": "https://github.com/TalkingGoose/Logger/issues"
+  },
+  "homepage": "https://github.com/TalkingGoose/Logger#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TalkingGoose/Logger/"
@@ -26,6 +33,6 @@
     "gulp-strip-comments": "^2.4.3",
     "gulp-uglify": "^1.5.4"
   },
-  "author": "TalkingGoose",
+  "author": "Paul Watkinson",
   "license": "ISC"
 }
