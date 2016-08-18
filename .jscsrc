@@ -1,0 +1,37 @@
+{
+  "preset": "google",
+  "maxErrors": 200,
+  "maximumLineLength": null,
+  "validateIndentation": 4,
+
+  "jsDoc": {
+    "checkAnnotations": "jsdoc3",
+    "checkParamExistence": true,
+    "checkParamNames": true,
+    "requireParamTypes": true,
+    "checkRedundantParams": true,
+    "checkReturnTypes": true,
+    "checkRedundantReturns": true,
+    "requireReturnTypes": true,
+    "checkTypes": "capitalizedNativeCase",
+    "checkRedundantAccess": true,
+    "enforceExistence": {
+      "allExcept": [
+        "arrow",
+        "anonymous"
+      ]
+    },
+
+    "requireNewlineAfterDescription": true,
+    "requireParamDescription": true
+  },
+
+  "disallowMultipleVarDecl": {
+    "allExcept": [
+      "undefined"
+    ]
+  },
+
+  "disallowSpacesInsideObjectBrackets": null,
+  "disallowSpacesInFunctionDeclaration": null
+}
