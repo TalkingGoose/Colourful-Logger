@@ -4,15 +4,13 @@
 
 'use strict';
 
-const path = require('path').posix;
-
 const gulp = require('gulp');
-
 const babel = require('gulp-babel');
 const strip = require('gulp-strip-comments');
 const uglify = require('gulp-uglify');
 
 const del = require('del');
+const path = require('path').posix;
 
 const DIR_NAME = __dirname.replace(/\\/g, '/');
 const SOURCE_ROOT = path.join(DIR_NAME, '/src');
@@ -23,7 +21,7 @@ gulp.task('clean:bin', () => {
 });
 
 gulp.task('compile', ['clean:bin'], () => {
-    return gulp.src(path.join(SOURCE_ROOT, 'logger.es6'))
+    return gulp.src(path.join(SOURCE_ROOT, '/**/*'))
         .on('error', function(error) {
             console.log(error.toString());
             this.emit('end');
@@ -35,7 +33,7 @@ gulp.task('compile', ['clean:bin'], () => {
 });
 
 gulp.task('watch', ['compile'], () => {
-    return gulp.watch(['es6', 'js', 'json'].map(id => path.join(SOURCE_ROOT, `**/*.${id}`)), ['compile']);
+    return gulp.watch(path.join(SOURCE_ROOT, '**/*'), ['compile']);
 });
 
 gulp.task('build', ['compile'], () => {});
