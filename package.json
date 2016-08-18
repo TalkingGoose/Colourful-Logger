@@ -11,7 +11,7 @@
     "url": "git+https://github.com/TalkingGoose/Logger/"
   },
   "dependencies": {
-	"TypeOf": "TalkingGoose/TypeOf",
+	"typeof": "TalkingGoose/TypeOf",
     "colours": "TalkingGoose/Colours"
   },
   "devDependencies": {

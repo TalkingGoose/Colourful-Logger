@@ -5,7 +5,7 @@
 'use strict';
 
 const Colours = require('colours');
-const TypeOf = require('TypeOf');
+const TypeOf = require('typeof');
 
 const assert = require('assert');
 const util = require('util');
