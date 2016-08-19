@@ -277,7 +277,7 @@ Object.defineProperties(Logger.prototype, {
 
             let trace = this.trace();
             let traceString = `[${trace.file}:${trace.line}]`.grey;
-            let message = messages.map(this.stringify).join('');
+            let message = messages.map(this.stringify, this).join('');
 
             this.output(`${this.timestamp.grey} ${traceString} ${prefix} ${message}`);
         }
