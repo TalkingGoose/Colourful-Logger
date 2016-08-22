@@ -266,6 +266,22 @@ Object.defineProperties(Logger.prototype, {
     },
 
     /**
+     * Moves the tty cursor by the given amount
+     *
+     * @this Logger
+     * @memberof Logger#
+     * @alias Logger.move
+     * @method Logger#move
+     * @param {Number} x The x position of the cursor
+     * @param {Number} y The y position of the cursor
+     */
+    'move': {
+        'value': function(x, y) {
+            readline.moveCursor(this.stream, x, y);
+        }
+    },
+
+    /**
      * Clears the tty
      *
      * @this Logger
