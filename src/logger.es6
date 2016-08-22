@@ -10,6 +10,7 @@ const TypeOf = require('typeof');
 const assert = require('assert');
 const util = require('util');
 const path = require('path');
+const readline = require('readline');
 
 /**
  * @constructor Logger
@@ -246,6 +247,40 @@ Object.defineProperties(Logger.prototype, {
                 }
             };
         })()
+    },
+
+    /**
+     * Moves the tty cursor to the given position
+     *
+     * @this Logger
+     * @memberof Logger#
+     * @alias Logger.to
+     * @method Logger#to
+     * @param {Number} x The x position of the cursor
+     * @param {Number} y The y position of the cursor
+     */
+    'to': {
+        'value': function(x, y) {
+            readline.cursorTo(this.stream, x, y);
+        }
+    },
+
+    /**
+     * Clears the tty
+     *
+     * @this Logger
+     * @memberof Logger#
+     * @alias Logger.clear
+     * @method Logger#clear
+     */
+    'clear': {
+        'value': function() {
+            if (!this.stream.isTTY) {
+                return;
+            }
+
+            this.output(`\u001b[J`);
+        }
     },
 
     'skip': {
